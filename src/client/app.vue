@@ -321,7 +321,9 @@ export default Vue.extend({
 
 			this.$root.dialog({
 				title: this.$t('search'),
-				input: true
+				input: {
+					default: this.searchQuery
+				}
 			}).then(async ({ canceled, result: query }) => {
 				if (canceled || query == null || query == '') return;
 
