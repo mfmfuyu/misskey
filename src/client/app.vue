@@ -293,7 +293,7 @@ export default Vue.extend({
 		const ro = new ResizeObserver((entries, observer) => {
 			adjustTitlePosition();
 		});
-		
+
 		ro.observe(this.$refs.contents);
 
 		window.addEventListener('resize', adjustTitlePosition);
@@ -326,6 +326,7 @@ export default Vue.extend({
 				if (canceled || query == null || query == '') return;
 
 				this.searching = true;
+				this.searchQuery = query;
 				search(this, query).finally(() => {
 					this.searching = false;
 				});
@@ -337,7 +338,6 @@ export default Vue.extend({
 				this.searchWait = true;
 				search(this, this.searchQuery).finally(() => {
 					this.searchWait = false;
-					this.searchQuery = '';
 				});
 			}
 		},
